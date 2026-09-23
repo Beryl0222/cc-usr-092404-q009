@@ -1,0 +1,8 @@
+[project]
+name = "medical-mission-allocation"
+version = "0.1.0"
+description = "国际义诊候选分配领域资料"
+requires-python = ">=3.11"
+
+[tool.unittest]
+start-directory = "tests"
