@@ -1,0 +1,670 @@
+[
+  {
+    "event_id": "t-001",
+    "kind": "SCREENING_REGISTERED",
+    "occurred_at": "2026-09-01T09:00:00+08:00",
+    "subject_id": "demo-101",
+    "payload": {
+      "region": "remote-west",
+      "urgency": 5,
+      "screening_status": "FIT",
+      "risk_score": 0.8
+    }
+  },
+  {
+    "event_id": "t-002",
+    "kind": "SCREENING_REGISTERED",
+    "occurred_at": "2026-09-01T09:05:00+08:00",
+    "subject_id": "demo-102",
+    "payload": {
+      "region": "central",
+      "urgency": 2,
+      "screening_status": "FIT",
+      "risk_score": 0.3
+    }
+  },
+  {
+    "event_id": "t-003",
+    "kind": "SCREENING_REGISTERED",
+    "occurred_at": "2026-09-01T09:10:00+08:00",
+    "subject_id": "demo-103",
+    "payload": {
+      "region": "remote-west",
+      "urgency": 3,
+      "screening_status": "FIT",
+      "risk_score": 0.5
+    }
+  },
+  {
+    "event_id": "t-004",
+    "kind": "ELIGIBILITY_SIGNED",
+    "occurred_at": "2026-09-02T10:00:00+08:00",
+    "subject_id": "demo-101",
+    "payload": {
+      "indication": "cataract",
+      "consent_signed": true,
+      "follow_up_committed": true,
+      "language": "sw"
+    }
+  },
+  {
+    "event_id": "t-005",
+    "kind": "ELIGIBILITY_SIGNED",
+    "occurred_at": "2026-09-02T10:05:00+08:00",
+    "subject_id": "demo-102",
+    "payload": {
+      "indication": "cataract",
+      "consent_signed": true,
+      "follow_up_committed": true,
+      "language": "en"
+    }
+  },
+  {
+    "event_id": "t-006",
+    "kind": "ELIGIBILITY_SIGNED",
+    "occurred_at": "2026-09-02T10:10:00+08:00",
+    "subject_id": "demo-103",
+    "payload": {
+      "indication": "cataract",
+      "consent_signed": true,
+      "follow_up_committed": true,
+      "language": "sw"
+    }
+  },
+  {
+    "event_id": "t-007",
+    "kind": "CANDIDATE_EVALUATED",
+    "occurred_at": "2026-09-03T09:00:00+08:00",
+    "subject_id": "demo-101",
+    "payload": {
+      "slot_id": "slot-01",
+      "policy_version": "policy-2026.09",
+      "data_version": "sha256:cbd70215eb3f691b",
+      "eligible": true,
+      "gate_failures": [],
+      "factors": {
+        "urgency": {
+          "score": 1.0,
+          "reason": "紧急程度 5/5"
+        },
+        "equity": {
+          "score": 0.666667,
+          "reason": "地区 remote-west 目标 30%，当前 10%，缺口 20%",
+          "region": "remote-west",
+          "target": 0.3,
+          "current_share": 0.1,
+          "deficit": 0.2
+        },
+        "screening_need": {
+          "score": 0.8,
+          "reason": "筛查风险越高越优先"
+        },
+        "language": {
+          "score": 1.0,
+          "reason": "接诊链直接支持该语言",
+          "language": "sw"
+        }
+      },
+      "total": 0.876667,
+      "suggested_rank": 1,
+      "inputs": {
+        "candidate": {
+          "subject_id": "demo-101",
+          "region": "remote-west",
+          "urgency": 5,
+          "risk_score": 0.8,
+          "screening_status": "FIT",
+          "indication": "cataract",
+          "required_skill": "ophthalmology",
+          "consent_signed": true,
+          "follow_up_committed": true,
+          "language": "sw",
+          "travel_windows": [
+            [
+              "2026-10-04",
+              "2026-10-13"
+            ]
+          ]
+        },
+        "slot": {
+          "slot_id": "slot-01",
+          "partner_id": "partner-north",
+          "indications": [
+            "cataract"
+          ],
+          "skills": [
+            "ophthalmology"
+          ],
+          "mission_window": [
+            "2026-10-05",
+            "2026-10-12"
+          ],
+          "languages": [
+            "sw"
+          ],
+          "interpreter_available": true,
+          "region_shares": {
+            "remote-west": 0.1,
+            "central": 0.6
+          }
+        }
+      }
+    }
+  },
+  {
+    "event_id": "t-008",
+    "kind": "CANDIDATE_EVALUATED",
+    "occurred_at": "2026-09-03T09:05:00+08:00",
+    "subject_id": "demo-102",
+    "payload": {
+      "slot_id": "slot-01",
+      "policy_version": "policy-2026.09",
+      "data_version": "sha256:c8479131686e8213",
+      "eligible": true,
+      "gate_failures": [],
+      "factors": {
+        "urgency": {
+          "score": 0.4,
+          "reason": "紧急程度 2/5"
+        },
+        "equity": {
+          "score": 0.0,
+          "reason": "地区 central 目标 50%，当前 60%，缺口 0%",
+          "region": "central",
+          "target": 0.5,
+          "current_share": 0.6,
+          "deficit": 0.0
+        },
+        "screening_need": {
+          "score": 0.3,
+          "reason": "筛查风险越高越优先"
+        },
+        "language": {
+          "score": 0.5,
+          "reason": "需依赖现场翻译支持",
+          "language": "en"
+        }
+      },
+      "total": 0.295,
+      "suggested_rank": 3,
+      "inputs": {
+        "candidate": {
+          "subject_id": "demo-102",
+          "region": "central",
+          "urgency": 2,
+          "risk_score": 0.3,
+          "screening_status": "FIT",
+          "indication": "cataract",
+          "required_skill": "ophthalmology",
+          "consent_signed": true,
+          "follow_up_committed": true,
+          "language": "en",
+          "travel_windows": [
+            [
+              "2026-10-06",
+              "2026-10-11"
+            ]
+          ]
+        },
+        "slot": {
+          "slot_id": "slot-01",
+          "partner_id": "partner-north",
+          "indications": [
+            "cataract"
+          ],
+          "skills": [
+            "ophthalmology"
+          ],
+          "mission_window": [
+            "2026-10-05",
+            "2026-10-12"
+          ],
+          "languages": [
+            "sw"
+          ],
+          "interpreter_available": true,
+          "region_shares": {
+            "remote-west": 0.1,
+            "central": 0.6
+          }
+        }
+      }
+    }
+  },
+  {
+    "event_id": "t-009",
+    "kind": "CANDIDATE_EVALUATED",
+    "occurred_at": "2026-09-03T09:10:00+08:00",
+    "subject_id": "demo-103",
+    "payload": {
+      "slot_id": "slot-01",
+      "policy_version": "policy-2026.09",
+      "data_version": "sha256:cdc3ea03634baed1",
+      "eligible": true,
+      "gate_failures": [],
+      "factors": {
+        "urgency": {
+          "score": 0.6,
+          "reason": "紧急程度 3/5"
+        },
+        "equity": {
+          "score": 0.666667,
+          "reason": "地区 remote-west 目标 30%，当前 10%，缺口 20%",
+          "region": "remote-west",
+          "target": 0.3,
+          "current_share": 0.1,
+          "deficit": 0.2
+        },
+        "screening_need": {
+          "score": 0.5,
+          "reason": "筛查风险越高越优先"
+        },
+        "language": {
+          "score": 1.0,
+          "reason": "接诊链直接支持该语言",
+          "language": "sw"
+        }
+      },
+      "total": 0.656667,
+      "suggested_rank": 2,
+      "inputs": {
+        "candidate": {
+          "subject_id": "demo-103",
+          "region": "remote-west",
+          "urgency": 3,
+          "risk_score": 0.5,
+          "screening_status": "FIT",
+          "indication": "cataract",
+          "required_skill": "ophthalmology",
+          "consent_signed": true,
+          "follow_up_committed": true,
+          "language": "sw",
+          "travel_windows": [
+            [
+              "2026-10-05",
+              "2026-10-12"
+            ]
+          ]
+        },
+        "slot": {
+          "slot_id": "slot-01",
+          "partner_id": "partner-north",
+          "indications": [
+            "cataract"
+          ],
+          "skills": [
+            "ophthalmology"
+          ],
+          "mission_window": [
+            "2026-10-05",
+            "2026-10-12"
+          ],
+          "languages": [
+            "sw"
+          ],
+          "interpreter_available": true,
+          "region_shares": {
+            "remote-west": 0.1,
+            "central": 0.6
+          }
+        }
+      }
+    }
+  },
+  {
+    "event_id": "t-010",
+    "kind": "CANDIDATE_EVALUATED",
+    "occurred_at": "2026-09-03T09:15:00+08:00",
+    "subject_id": "demo-102",
+    "payload": {
+      "slot_id": "slot-02",
+      "policy_version": "policy-2026.09",
+      "data_version": "sha256:c706737a18e6fec5",
+      "eligible": true,
+      "gate_failures": [],
+      "factors": {
+        "urgency": {
+          "score": 0.4,
+          "reason": "紧急程度 2/5"
+        },
+        "equity": {
+          "score": 0.0,
+          "reason": "地区 central 目标 50%，当前 50%，缺口 0%",
+          "region": "central",
+          "target": 0.5,
+          "current_share": 0.5,
+          "deficit": 0.0
+        },
+        "screening_need": {
+          "score": 0.3,
+          "reason": "筛查风险越高越优先"
+        },
+        "language": {
+          "score": 1.0,
+          "reason": "接诊链直接支持该语言",
+          "language": "en"
+        }
+      },
+      "total": 0.37,
+      "suggested_rank": 2,
+      "inputs": {
+        "candidate": {
+          "subject_id": "demo-102",
+          "region": "central",
+          "urgency": 2,
+          "risk_score": 0.3,
+          "screening_status": "FIT",
+          "indication": "cataract",
+          "required_skill": "ophthalmology",
+          "consent_signed": true,
+          "follow_up_committed": true,
+          "language": "en",
+          "travel_windows": [
+            [
+              "2026-10-06",
+              "2026-10-11"
+            ]
+          ]
+        },
+        "slot": {
+          "slot_id": "slot-02",
+          "partner_id": "partner-north",
+          "indications": [
+            "cataract"
+          ],
+          "skills": [
+            "ophthalmology"
+          ],
+          "mission_window": [
+            "2026-10-05",
+            "2026-10-12"
+          ],
+          "languages": [
+            "sw",
+            "en"
+          ],
+          "interpreter_available": true,
+          "region_shares": {
+            "remote-west": 0.0,
+            "central": 0.5
+          }
+        }
+      }
+    }
+  },
+  {
+    "event_id": "t-011",
+    "kind": "CANDIDATE_EVALUATED",
+    "occurred_at": "2026-09-03T09:20:00+08:00",
+    "subject_id": "demo-103",
+    "payload": {
+      "slot_id": "slot-02",
+      "policy_version": "policy-2026.09",
+      "data_version": "sha256:423a2d1bfc227675",
+      "eligible": true,
+      "gate_failures": [],
+      "factors": {
+        "urgency": {
+          "score": 0.6,
+          "reason": "紧急程度 3/5"
+        },
+        "equity": {
+          "score": 1.0,
+          "reason": "地区 remote-west 目标 30%，当前 0%，缺口 30%",
+          "region": "remote-west",
+          "target": 0.3,
+          "current_share": 0.0,
+          "deficit": 0.3
+        },
+        "screening_need": {
+          "score": 0.5,
+          "reason": "筛查风险越高越优先"
+        },
+        "language": {
+          "score": 1.0,
+          "reason": "接诊链直接支持该语言",
+          "language": "sw"
+        }
+      },
+      "total": 0.74,
+      "suggested_rank": 1,
+      "inputs": {
+        "candidate": {
+          "subject_id": "demo-103",
+          "region": "remote-west",
+          "urgency": 3,
+          "risk_score": 0.5,
+          "screening_status": "FIT",
+          "indication": "cataract",
+          "required_skill": "ophthalmology",
+          "consent_signed": true,
+          "follow_up_committed": true,
+          "language": "sw",
+          "travel_windows": [
+            [
+              "2026-10-05",
+              "2026-10-12"
+            ]
+          ]
+        },
+        "slot": {
+          "slot_id": "slot-02",
+          "partner_id": "partner-north",
+          "indications": [
+            "cataract"
+          ],
+          "skills": [
+            "ophthalmology"
+          ],
+          "mission_window": [
+            "2026-10-05",
+            "2026-10-12"
+          ],
+          "languages": [
+            "sw",
+            "en"
+          ],
+          "interpreter_available": true,
+          "region_shares": {
+            "remote-west": 0.0,
+            "central": 0.5
+          }
+        }
+      }
+    }
+  },
+  {
+    "event_id": "t-012",
+    "kind": "SLOT_HOLD_PLACED",
+    "occurred_at": "2026-09-04T09:00:00+08:00",
+    "subject_id": "demo-101",
+    "payload": {
+      "hold_id": "hold-1",
+      "slot_id": "slot-01",
+      "partner_id": "partner-north",
+      "expires_at": "2026-09-07T09:00:00+08:00",
+      "idempotency_key": "hold-1"
+    }
+  },
+  {
+    "event_id": "t-013",
+    "kind": "SLOT_HOLD_PLACED",
+    "occurred_at": "2026-09-04T09:10:00+08:00",
+    "subject_id": "demo-102",
+    "payload": {
+      "hold_id": "hold-2",
+      "slot_id": "slot-02",
+      "partner_id": "partner-north",
+      "expires_at": "2026-09-07T09:10:00+08:00",
+      "idempotency_key": "hold-2"
+    }
+  },
+  {
+    "event_id": "t-014",
+    "kind": "ALLOCATION_CONFIRMED",
+    "occurred_at": "2026-09-05T09:00:00+08:00",
+    "subject_id": "demo-101",
+    "payload": {
+      "hold_id": "hold-1",
+      "confirmed_by": "coord-a",
+      "fence_token": "fence-001",
+      "policy_version": "policy-2026.09",
+      "data_version": "sha256:cbd70215eb3f691b"
+    }
+  },
+  {
+    "event_id": "t-015",
+    "kind": "IDENTITY_DISCLOSED",
+    "occurred_at": "2026-09-05T10:00:00+08:00",
+    "subject_id": "demo-101",
+    "payload": {
+      "disclosed_to": [
+        "partner-north"
+      ],
+      "scope": "care-chain"
+    }
+  },
+  {
+    "event_id": "t-016",
+    "kind": "SLOT_HOLD_RELEASED",
+    "occurred_at": "2026-09-06T08:00:00+08:00",
+    "subject_id": "demo-102",
+    "payload": {
+      "hold_id": "hold-2",
+      "reason": "MATERIALS_STALE",
+      "idempotency_key": "rel-hold-2"
+    }
+  },
+  {
+    "event_id": "t-017",
+    "kind": "WAITLIST_PROMOTED",
+    "occurred_at": "2026-09-06T10:00:00+08:00",
+    "subject_id": "demo-103",
+    "payload": {
+      "released_hold_id": "hold-2",
+      "hold_id": "hold-3",
+      "rule_version": "policy-2026.09",
+      "expires_at": "2026-09-09T10:00:00+08:00",
+      "idempotency_key": "promo-hold-3"
+    }
+  },
+  {
+    "event_id": "t-018",
+    "kind": "EXCEPTION_REQUESTED",
+    "occurred_at": "2026-09-07T08:00:00+08:00",
+    "subject_id": "demo-104",
+    "payload": {
+      "requested_by": "coord-b",
+      "reason": "复杂术后病例需加急，建议名单外处理",
+      "deviates_from": "suggested_rank"
+    }
+  },
+  {
+    "event_id": "t-019",
+    "kind": "EXCEPTION_APPROVED",
+    "occurred_at": "2026-09-07T08:30:00+08:00",
+    "subject_id": "demo-104",
+    "payload": {
+      "requested_by": "coord-b",
+      "approved_by": "reviewer-c",
+      "impact": "占用 slot-03；建议名单不变；remote-west 公平缺口由 0.20 升至 0.23，已记录并通知协调组"
+    }
+  },
+  {
+    "event_id": "t-020",
+    "kind": "SLOT_HOLD_PLACED",
+    "occurred_at": "2026-09-07T10:00:00+08:00",
+    "subject_id": "demo-104",
+    "payload": {
+      "hold_id": "hold-4",
+      "slot_id": "slot-03",
+      "partner_id": "partner-north",
+      "expires_at": "2026-09-10T10:00:00+08:00",
+      "idempotency_key": "hold-4",
+      "exception_ref": "t-019"
+    }
+  },
+  {
+    "event_id": "t-021",
+    "kind": "ALLOCATION_CONFIRMED",
+    "occurred_at": "2026-09-08T09:00:00+08:00",
+    "subject_id": "demo-103",
+    "payload": {
+      "hold_id": "hold-3",
+      "confirmed_by": "coord-a",
+      "fence_token": "fence-003",
+      "policy_version": "policy-2026.09",
+      "data_version": "sha256:423a2d1bfc227675"
+    }
+  },
+  {
+    "event_id": "t-022",
+    "kind": "ALLOCATION_CONFIRMED",
+    "occurred_at": "2026-09-08T10:00:00+08:00",
+    "subject_id": "demo-104",
+    "payload": {
+      "hold_id": "hold-4",
+      "confirmed_by": "coord-b",
+      "fence_token": "fence-004",
+      "policy_version": "policy-2026.09",
+      "data_version": "sha256:ce6178b502b3777e"
+    }
+  },
+  {
+    "event_id": "t-023",
+    "kind": "ITINERARY_CHANGED",
+    "occurred_at": "2026-09-08T11:00:00+08:00",
+    "subject_id": "demo-104",
+    "payload": {
+      "affects_event_id": "t-020",
+      "recompute_scope": "NON_DEPARTED_ONLY",
+      "note": "航班改签，仅重算未出发安排"
+    }
+  },
+  {
+    "event_id": "t-024",
+    "kind": "DEPARTURE_RECORDED",
+    "occurred_at": "2026-09-09T08:00:00+08:00",
+    "subject_id": "demo-101",
+    "payload": {
+      "hold_id": "hold-1"
+    }
+  },
+  {
+    "event_id": "t-025",
+    "kind": "SCREENING_CORRECTED",
+    "occurred_at": "2026-09-10T08:30:00+08:00",
+    "subject_id": "demo-102",
+    "payload": {
+      "corrects_event_id": "t-002",
+      "changes": {
+        "risk_score": [
+          0.3,
+          0.45
+        ]
+      },
+      "recompute_scope": "NON_DEPARTED_ONLY"
+    }
+  },
+  {
+    "event_id": "t-026",
+    "kind": "TREATMENT_COMPLETED",
+    "occurred_at": "2026-09-15T10:00:00+08:00",
+    "subject_id": "demo-101",
+    "payload": {
+      "hold_id": "hold-1",
+      "summary_ref": "note-778"
+    }
+  },
+  {
+    "event_id": "t-027",
+    "kind": "OUTCOME_HANDED_OFF",
+    "occurred_at": "2026-09-15T11:00:00+08:00",
+    "subject_id": "demo-101",
+    "payload": {
+      "hold_id": "hold-1",
+      "handed_to": "partner-north",
+      "idempotency_key": "handoff-hold-1"
+    }
+  }
+]
