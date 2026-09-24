@@ -1,13 +1,19 @@
-"""medical_mission_allocation 领域资料的基础结构。"""
+"""medical_mission_allocation 领域资料的基础结构。
+
+保持历史模块路径与公开函数不变；完整实现见
+`src.domain`（事件契约）、`src.ranking`（可解释排序）、`src.service`（分配服务）。
+"""
 
 from __future__ import annotations
 
-EVENT_KINDS = ['SCREENING_REGISTERED', 'ELIGIBILITY_SIGNED', 'SLOT_ALLOCATED', 'EXCEPTION_APPROVED', 'OUTCOME_HANDED_OFF']
-REQUIRED_FIELDS = ("event_id", "kind", "occurred_at", "subject_id", "payload")
+from .domain import EVENT_KINDS, REQUIRED_FIELDS, validate_event
+from .ranking import rank_candidates
+from .service import AllocationService
 
-def validate_event(record: dict) -> list[str]:
-    """检查样例事件是否具备可交换的最小字段。"""
-    problems = [name for name in REQUIRED_FIELDS if name not in record]
-    if record.get("kind") not in EVENT_KINDS:
-        problems.append("kind")
-    return problems
+__all__ = [
+    "EVENT_KINDS",
+    "REQUIRED_FIELDS",
+    "validate_event",
+    "rank_candidates",
+    "AllocationService",
+]
